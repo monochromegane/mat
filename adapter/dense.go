@@ -37,3 +37,62 @@ func (m *Dense) CloneFrom() mat.Matrix {
 	dense.CloneFrom(m.Dense)
 	return &Dense{&dense}
 }
+
+// func (m *Dense) ColView(j int) mat.Vector
+
+// func (m *Dense) DiagView() mat.Diagonal
+
+func (m *Dense) DivElem(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.DivElem(m.Dense, b)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Exp() mat.Matrix {
+	var dense mat.Dense
+	dense.Exp(m.Dense)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Grow(r, c int) mat.Matrix {
+	dense := m.Dense.Grow(r, c).(*mat.Dense)
+	return &Dense{dense}
+}
+
+func (m *Dense) Inverse() (mat.Matrix, error) {
+	var dense mat.Dense
+	err := dense.Inverse(m.Dense)
+	return &Dense{&dense}, err
+}
+
+func (m *Dense) Kronecker(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.Kronecker(m.Dense, b)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Mul(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.Mul(m.Dense, b)
+	return &Dense{&dense}
+}
+
+func (m *Dense) MulElem(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.MulElem(m.Dense, b)
+	return &Dense{&dense}
+}
+
+// func (m *Dense) Outer(alpha float64, x, y Vector)
+
+func (m *Dense) Pow(n int) mat.Matrix {
+	var dense mat.Dense
+	dense.Pow(m.Dense, n)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Product(factors ...mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.Product(append([]mat.Matrix{m.Dense}, factors...)...)
+	return &Dense{&dense}
+}
