@@ -134,4 +134,6 @@ func (m *Dense) Sub(b mat.Matrix) mat.Matrix {
 	return &Dense{&dense}
 }
 
-// func (m *Dense) T() mat.Matrix
+func (m *Dense) T() mat.Matrix {
+	return mat.Transpose{m}
+}

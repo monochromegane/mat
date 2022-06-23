@@ -404,3 +404,15 @@ func TestDenseSub(t *testing.T) {
 		t.Errorf("Result of Sub should be equal.")
 	}
 }
+
+func TestDenseT(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	org := a.T()
+
+	ax := DenseCopyOf(a)
+	adapted := ax.T()
+
+	if !mat.EqualApprox(org, adapted, epsilon) {
+		t.Errorf("Result of T should be equal.")
+	}
+}
