@@ -284,3 +284,123 @@ func TestDenseProduct(t *testing.T) {
 		t.Errorf("Result of Product should be equal.")
 	}
 }
+
+func TestDenseRankOne(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	x := mat.NewVecDense(2, data[0:2])
+	y := mat.NewVecDense(2, data[2:4])
+	alpha := 1.1
+
+	org := mat.NewDense(2, 2, nil)
+	org.RankOne(a, alpha, x, y)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.RankOne(alpha, x, y)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of RankOne should be equal.")
+	}
+}
+
+func TestDenseScale(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+
+	org := mat.NewDense(2, 2, nil)
+	org.Scale(2.0, a)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.Scale(2.0)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Scale should be equal.")
+	}
+}
+
+func TestDenseSlice(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	org := a.Slice(0, 1, 0, 2)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.Slice(0, 1, 0, 2)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Slice should be equal.")
+	}
+}
+
+func TestDenseSolve(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	b := mat.NewDense(2, 2, data)
+
+	org := mat.NewDense(2, 2, nil)
+	errOrg := org.Solve(a, b)
+
+	ax := DenseCopyOf(a)
+	adapted, errAdapted := ax.Solve(b)
+
+	if errOrg != nil || errAdapted != nil {
+		t.Errorf("Solve should not return err.")
+	}
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Solve should be equal.")
+	}
+
+	ax = DenseCopyOf(a)
+	bx := DenseCopyOf(b)
+	adapted, errAdapted = ax.Solve(bx)
+
+	if errAdapted != nil {
+		t.Errorf("Solve should not return err.")
+	}
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Solve should be equal.")
+	}
+}
+
+func TestDenseStack(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	b := mat.NewDense(2, 2, data)
+
+	org := mat.NewDense(4, 2, nil)
+	org.Stack(a, b)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.Stack(b)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Stack should be equal.")
+	}
+
+	ax = DenseCopyOf(a)
+	bx := DenseCopyOf(b)
+	adapted = ax.Stack(bx)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Stack should be equal.")
+	}
+}
+
+func TestDenseSub(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	b := mat.NewDense(2, 2, data)
+
+	org := mat.NewDense(2, 2, nil)
+	org.Sub(a, b)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.Sub(b)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Sub should be equal.")
+	}
+
+	ax = DenseCopyOf(a)
+	bx := DenseCopyOf(b)
+	adapted = ax.Sub(bx)
+
+	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+		t.Errorf("Result of Sub should be equal.")
+	}
+}

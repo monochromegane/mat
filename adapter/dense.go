@@ -96,3 +96,42 @@ func (m *Dense) Product(factors ...mat.Matrix) mat.Matrix {
 	dense.Product(append([]mat.Matrix{m.Dense}, factors...)...)
 	return &Dense{&dense}
 }
+
+func (m *Dense) RankOne(alpha float64, x, y mat.Vector) mat.Matrix {
+	var dense mat.Dense
+	dense.RankOne(m.Dense, alpha, x, y)
+	return &Dense{&dense}
+}
+
+// func (m *Dense) RowView(i int) Vector
+
+func (m *Dense) Scale(f float64) mat.Matrix {
+	var dense mat.Dense
+	dense.Scale(f, m.Dense)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Slice(i, k, j, l int) mat.Matrix {
+	dense := m.Dense.Slice(i, k, j, l).(*mat.Dense)
+	return &Dense{dense}
+}
+
+func (m *Dense) Solve(b mat.Matrix) (mat.Matrix, error) {
+	var dense mat.Dense
+	err := dense.Solve(m.Dense, b)
+	return &Dense{&dense}, err
+}
+
+func (m *Dense) Stack(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.Stack(m.Dense, b)
+	return &Dense{&dense}
+}
+
+func (m *Dense) Sub(b mat.Matrix) mat.Matrix {
+	var dense mat.Dense
+	dense.Sub(m.Dense, b)
+	return &Dense{&dense}
+}
+
+// func (m *Dense) T() mat.Matrix
