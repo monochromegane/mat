@@ -1,6 +1,10 @@
 package adapter
 
-import "gonum.org/v1/gonum/mat"
+import (
+	"fmt"
+
+	"gonum.org/v1/gonum/mat"
+)
 
 type Dense struct {
 	*mat.Dense
@@ -136,4 +140,8 @@ func (m *Dense) Sub(b mat.Matrix) mat.Matrix {
 
 func (m *Dense) T() mat.Matrix {
 	return mat.Transpose{m}
+}
+
+func (m *Dense) String() string {
+	return fmt.Sprintf("%v", mat.Formatted(m.Dense, mat.Prefix(""), mat.Squeeze()))
 }

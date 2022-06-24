@@ -1,6 +1,10 @@
 package adapter
 
-import "gonum.org/v1/gonum/mat"
+import (
+	"fmt"
+
+	"gonum.org/v1/gonum/mat"
+)
 
 type VecDense struct {
 	*mat.VecDense
@@ -71,4 +75,8 @@ func (v *VecDense) T() mat.Matrix {
 
 func (v *VecDense) TVec() mat.Vector {
 	return mat.TransposeVec{v}
+}
+
+func (v *VecDense) String() string {
+	return fmt.Sprintf("%v", mat.Formatted(v.VecDense, mat.Prefix(""), mat.Squeeze()))
 }

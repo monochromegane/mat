@@ -1,6 +1,7 @@
 package adapter
 
 import (
+	"fmt"
 	"testing"
 
 	"gonum.org/v1/gonum/mat"
@@ -415,4 +416,12 @@ func TestDenseT(t *testing.T) {
 	if !mat.EqualApprox(org, adapted, epsilon) {
 		t.Errorf("Result of T should be equal.")
 	}
+}
+
+func ExampleDenseString() {
+	ax := NewDense(2, 2, data)
+	fmt.Printf("%v", ax)
+	// Output:
+	// ⎡1  2⎤
+	// ⎣3  4⎦
 }

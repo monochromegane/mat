@@ -1,6 +1,7 @@
 package adapter
 
 import (
+	"fmt"
 	"testing"
 
 	"gonum.org/v1/gonum/mat"
@@ -210,4 +211,14 @@ func TestVecDenseTVec(t *testing.T) {
 	if !mat.EqualApprox(org, adapted, epsilon) {
 		t.Errorf("Result of TVec should be equal.")
 	}
+}
+
+func ExampleVecDenseString() {
+	ax := NewVecDense(4, data)
+	fmt.Printf("%v", ax)
+	// Output:
+	// ⎡1⎤
+	// ⎢2⎥
+	// ⎢3⎥
+	// ⎣4⎦
 }
