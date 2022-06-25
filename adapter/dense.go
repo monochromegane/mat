@@ -42,7 +42,11 @@ func (m *Dense) CloneFrom() mat.Matrix {
 	return &Dense{&dense}
 }
 
-// func (m *Dense) ColView(j int) mat.Vector
+func (m *Dense) ColView(j int) mat.Vector {
+	var vec mat.VecDense
+	vec.ColViewOf(m.Dense, j)
+	return &VecDense{&vec}
+}
 
 // func (m *Dense) DiagView() mat.Diagonal
 
@@ -107,7 +111,11 @@ func (m *Dense) RankOne(alpha float64, x, y mat.Vector) mat.Matrix {
 	return &Dense{&dense}
 }
 
-// func (m *Dense) RowView(i int) Vector
+func (m *Dense) RowView(i int) mat.Vector {
+	var vec mat.VecDense
+	vec.RowViewOf(m.Dense, i)
+	return &VecDense{&vec}
+}
 
 func (m *Dense) Scale(f float64) mat.Matrix {
 	var dense mat.Dense

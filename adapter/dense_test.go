@@ -112,6 +112,18 @@ func TestDenseCloneFrom(t *testing.T) {
 	}
 }
 
+func TestDenseColView(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	org := a.ColView(1)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.ColView(1)
+
+	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+		t.Errorf("Result of ColView should be equal.")
+	}
+}
+
 func TestDenseDivElem(t *testing.T) {
 	a := mat.NewDense(2, 2, data)
 	b := mat.NewDense(2, 2, data)
@@ -300,6 +312,18 @@ func TestDenseRankOne(t *testing.T) {
 
 	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
 		t.Errorf("Result of RankOne should be equal.")
+	}
+}
+
+func TestDenseRowView(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	org := a.RowView(1)
+
+	ax := DenseCopyOf(a)
+	adapted := ax.RowView(1)
+
+	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+		t.Errorf("Result of RowView should be equal.")
 	}
 }
 
