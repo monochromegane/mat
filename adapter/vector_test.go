@@ -189,6 +189,37 @@ func TestDenseSliceVec(t *testing.T) {
 	}
 }
 
+func TestVecDenseSolveVec(t *testing.T) {
+	a := mat.NewVecDense(1, []float64{2.0})
+	b := mat.NewVecDense(1, []float64{1.0})
+
+	org := mat.NewVecDense(1, nil)
+	errOrg := org.SolveVec(a, b)
+
+	ax := VecDenseCopyOf(a)
+	adapted, errAdapted := ax.SolveVec(b)
+
+	if errOrg != nil || errAdapted != nil {
+		t.Errorf("SolveVec should not return err.")
+	}
+
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
+		t.Errorf("Result of SolveVec should be equal.")
+	}
+
+	ax = VecDenseCopyOf(a)
+	bx := VecDenseCopyOf(b)
+	adapted, errAdapted = ax.SolveVec(bx)
+
+	if errAdapted != nil {
+		t.Errorf("SolveVec should not return err.")
+	}
+
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
+		t.Errorf("Result of MulVec should be equal.")
+	}
+}
+
 func TestVecDenseSubVec(t *testing.T) {
 	a := mat.NewVecDense(4, data)
 	b := mat.NewVecDense(4, data)

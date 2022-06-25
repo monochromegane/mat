@@ -354,10 +354,10 @@ func TestDenseSlice(t *testing.T) {
 }
 
 func TestDenseSolve(t *testing.T) {
-	a := mat.NewDense(2, 2, data)
-	b := mat.NewDense(2, 2, data)
+	a := mat.NewDense(2, 2, []float64{1.0, 2.0, 3.0, 5.0})
+	b := mat.NewDense(2, 1, []float64{1.0, 2.0})
 
-	org := mat.NewDense(2, 2, nil)
+	org := mat.NewDense(2, 1, nil)
 	errOrg := org.Solve(a, b)
 
 	ax := DenseCopyOf(a)

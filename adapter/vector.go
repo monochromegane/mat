@@ -65,7 +65,11 @@ func (v *VecDense) SliceVec(i, k int) *VecDense {
 	return &VecDense{vec}
 }
 
-// func (v *VecDense) SolveVec(a Matrix, b Vector) error
+func (v *VecDense) SolveVec(b mat.Vector) (*VecDense, error) {
+	var vec mat.VecDense
+	err := vec.SolveVec(v.VecDense, b)
+	return &VecDense{&vec}, err
+}
 
 func (v *VecDense) SubVec(b mat.Vector) *VecDense {
 	var vec mat.VecDense
