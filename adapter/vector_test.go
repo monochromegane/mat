@@ -221,7 +221,7 @@ func TestVecDenseTranspose(t *testing.T) {
 	adapted := ax.Transpose()
 
 	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
-		t.Errorf("Result of TVec should be equal.")
+		t.Errorf("Result of Transpose should be equal.")
 	}
 }
 
