@@ -47,7 +47,7 @@ func TestDenseAdd(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Add(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Add should be equal.")
 	}
 
@@ -55,7 +55,7 @@ func TestDenseAdd(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Add(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Add should be equal.")
 	}
 }
@@ -70,7 +70,7 @@ func TestDenseApply(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Apply(fn)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Apply should be equal.")
 	}
 }
@@ -85,7 +85,7 @@ func TestDenseAugment(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Augment(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Augment should be equal.")
 	}
 
@@ -93,7 +93,7 @@ func TestDenseAugment(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Augment(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Augment should be equal.")
 	}
 }
@@ -107,7 +107,7 @@ func TestDenseCloneFrom(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.CloneFrom()
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of CloneFrom should be equal.")
 	}
 }
@@ -119,7 +119,7 @@ func TestDenseColView(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.ColView(1)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of ColView should be equal.")
 	}
 }
@@ -134,7 +134,7 @@ func TestDenseDivElem(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.DivElem(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of DivElem should be equal.")
 	}
 
@@ -142,7 +142,7 @@ func TestDenseDivElem(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.DivElem(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of DivElem should be equal.")
 	}
 }
@@ -156,7 +156,7 @@ func TestDenseExp(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Exp()
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Exp should be equal.")
 	}
 }
@@ -168,7 +168,7 @@ func TestDenseGrow(t *testing.T) {
 	ax := NewDense(2, 2, data)
 	adapted := ax.Grow(3, 3)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Grow should be equal.")
 	}
 }
@@ -185,7 +185,7 @@ func TestDenseInverse(t *testing.T) {
 		t.Errorf("Inverse should not return err.")
 	}
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Inverse should be equal.")
 	}
 }
@@ -200,7 +200,7 @@ func TestDenseKronecker(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Kronecker(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Kronecker should be equal.")
 	}
 
@@ -208,7 +208,7 @@ func TestDenseKronecker(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Kronecker(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Kronecker should be equal.")
 	}
 }
@@ -223,7 +223,7 @@ func TestDenseMul(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Mul(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Mul should be equal.")
 	}
 
@@ -231,7 +231,7 @@ func TestDenseMul(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Mul(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Mul should be equal.")
 	}
 }
@@ -246,7 +246,7 @@ func TestDenseMulElem(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.MulElem(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of MulElem should be equal.")
 	}
 
@@ -254,7 +254,7 @@ func TestDenseMulElem(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.MulElem(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of MulElem should be equal.")
 	}
 }
@@ -268,7 +268,7 @@ func TestDensePow(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Pow(2)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Pow should be equal.")
 	}
 }
@@ -284,7 +284,7 @@ func TestDenseProduct(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Product(b, c)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Product should be equal.")
 	}
 
@@ -293,7 +293,7 @@ func TestDenseProduct(t *testing.T) {
 	cx := DenseCopyOf(c)
 	adapted = ax.Product(bx, cx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Product should be equal.")
 	}
 }
@@ -310,7 +310,7 @@ func TestDenseRankOne(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.RankOne(alpha, x, y)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of RankOne should be equal.")
 	}
 }
@@ -322,7 +322,7 @@ func TestDenseRowView(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.RowView(1)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of RowView should be equal.")
 	}
 }
@@ -336,7 +336,7 @@ func TestDenseScale(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Scale(2.0)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Scale should be equal.")
 	}
 }
@@ -348,7 +348,7 @@ func TestDenseSlice(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Slice(0, 1, 0, 2)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Slice should be equal.")
 	}
 }
@@ -367,7 +367,7 @@ func TestDenseSolve(t *testing.T) {
 		t.Errorf("Solve should not return err.")
 	}
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Solve should be equal.")
 	}
 
@@ -379,7 +379,7 @@ func TestDenseSolve(t *testing.T) {
 		t.Errorf("Solve should not return err.")
 	}
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Solve should be equal.")
 	}
 }
@@ -394,7 +394,7 @@ func TestDenseStack(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Stack(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Stack should be equal.")
 	}
 
@@ -402,7 +402,7 @@ func TestDenseStack(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Stack(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Stack should be equal.")
 	}
 }
@@ -417,7 +417,7 @@ func TestDenseSub(t *testing.T) {
 	ax := DenseCopyOf(a)
 	adapted := ax.Sub(b)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Sub should be equal.")
 	}
 
@@ -425,7 +425,7 @@ func TestDenseSub(t *testing.T) {
 	bx := DenseCopyOf(b)
 	adapted = ax.Sub(bx)
 
-	if !mat.EqualApprox(org, adapted.(*Dense).Dense, epsilon) {
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
 		t.Errorf("Result of Sub should be equal.")
 	}
 }

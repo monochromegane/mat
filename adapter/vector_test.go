@@ -44,7 +44,7 @@ func TestVecDenseAddScaledVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.AddScaledVec(1.1, b)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of AddScaledVec should be equal.")
 	}
 
@@ -52,7 +52,7 @@ func TestVecDenseAddScaledVec(t *testing.T) {
 	bx := VecDenseCopyOf(b)
 	adapted = ax.AddScaledVec(1.1, bx)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of AddScaledVec should be equal.")
 	}
 }
@@ -67,7 +67,7 @@ func TestVecDenseAddVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.AddVec(b)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of AddVec should be equal.")
 	}
 
@@ -75,7 +75,7 @@ func TestVecDenseAddVec(t *testing.T) {
 	bx := VecDenseCopyOf(b)
 	adapted = ax.AddVec(bx)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of AddVec should be equal.")
 	}
 }
@@ -89,7 +89,7 @@ func TestVecDenseCloneFromVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.CloneFromVec()
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of CloneFromVec should be equal.")
 	}
 }
@@ -104,7 +104,7 @@ func TestVecDenseDivElemVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.DivElemVec(b)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of DivElemVec should be equal.")
 	}
 
@@ -112,7 +112,7 @@ func TestVecDenseDivElemVec(t *testing.T) {
 	bx := VecDenseCopyOf(b)
 	adapted = ax.DivElemVec(bx)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of DivElemVec should be equal.")
 	}
 }
@@ -127,7 +127,7 @@ func TestVecDenseMulElemVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.MulElemVec(b)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of MulElemVec should be equal.")
 	}
 
@@ -135,7 +135,7 @@ func TestVecDenseMulElemVec(t *testing.T) {
 	bx := VecDenseCopyOf(b)
 	adapted = ax.MulElemVec(bx)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of MulElemVec should be equal.")
 	}
 }
@@ -149,7 +149,7 @@ func TestVecDenseScale(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.ScaleVec(2.0)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of ScaleVec should be equal.")
 	}
 }
@@ -161,7 +161,7 @@ func TestDenseSliceVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.SliceVec(1, 2)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of SliceVec should be equal.")
 	}
 }
@@ -176,7 +176,7 @@ func TestVecDenseSubVec(t *testing.T) {
 	ax := VecDenseCopyOf(a)
 	adapted := ax.SubVec(b)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of SubVec should be equal.")
 	}
 
@@ -184,7 +184,7 @@ func TestVecDenseSubVec(t *testing.T) {
 	bx := VecDenseCopyOf(b)
 	adapted = ax.SubVec(bx)
 
-	if !mat.EqualApprox(org, adapted.(*VecDense).VecDense, epsilon) {
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
 		t.Errorf("Result of SubVec should be equal.")
 	}
 }
