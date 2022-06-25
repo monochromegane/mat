@@ -48,7 +48,11 @@ func (v *VecDense) MulElemVec(b mat.Vector) *VecDense {
 	return &VecDense{&vec}
 }
 
-// func (v *VecDense) MulVec(a Matrix, b Vector)
+func (v *VecDense) MulVec(b mat.Vector) *VecDense {
+	var vec mat.VecDense
+	vec.MulVec(v.VecDense.TVec(), b)
+	return &VecDense{&vec}
+}
 
 func (v *VecDense) ScaleVec(alpha float64) *VecDense {
 	var vec mat.VecDense

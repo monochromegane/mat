@@ -140,6 +140,29 @@ func TestVecDenseMulElemVec(t *testing.T) {
 	}
 }
 
+func TestVecDenseMulVec(t *testing.T) {
+	a := mat.NewVecDense(4, data).TVec()
+	b := mat.NewVecDense(4, data)
+
+	org := mat.NewVecDense(1, nil)
+	org.MulVec(a, b)
+
+	ax := VecDenseCopyOf(a)
+	adapted := ax.MulVec(b)
+
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
+		t.Errorf("Result of MulVec should be equal.")
+	}
+
+	ax = VecDenseCopyOf(a)
+	bx := VecDenseCopyOf(b)
+	adapted = ax.MulVec(bx)
+
+	if !mat.EqualApprox(org, adapted.VecDense, epsilon) {
+		t.Errorf("Result of MulVec should be equal.")
+	}
+}
+
 func TestVecDenseScale(t *testing.T) {
 	a := mat.NewVecDense(4, data)
 
