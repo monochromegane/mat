@@ -442,6 +442,18 @@ func TestDenseT(t *testing.T) {
 	}
 }
 
+func TestDenseTranspose(t *testing.T) {
+	a := mat.NewDense(2, 2, data)
+	org := a.T()
+
+	ax := DenseCopyOf(a)
+	adapted := ax.Transpose()
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of Transpose should be equal.")
+	}
+}
+
 func ExampleDenseString() {
 	ax := NewDense(2, 2, data)
 	fmt.Printf("%v", ax)

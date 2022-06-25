@@ -213,6 +213,18 @@ func TestVecDenseTVec(t *testing.T) {
 	}
 }
 
+func TestVecDenseTranspose(t *testing.T) {
+	a := mat.NewVecDense(4, data)
+	org := mat.DenseCopyOf(a)
+
+	ax := VecDenseCopyOf(a)
+	adapted := ax.Transpose()
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of TVec should be equal.")
+	}
+}
+
 func ExampleVecDenseString() {
 	ax := NewVecDense(4, data)
 	fmt.Printf("%v", ax)

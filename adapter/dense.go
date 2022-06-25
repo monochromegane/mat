@@ -150,6 +150,10 @@ func (m *Dense) T() mat.Matrix {
 	return mat.Transpose{m}
 }
 
+func (m *Dense) Transpose() *Dense {
+	return &Dense{mat.DenseCopyOf(m.Dense.T())}
+}
+
 func (m *Dense) String() string {
 	return fmt.Sprintf("%v", mat.Formatted(m.Dense, mat.Prefix(""), mat.Squeeze()))
 }

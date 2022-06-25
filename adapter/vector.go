@@ -77,6 +77,10 @@ func (v *VecDense) TVec() mat.Vector {
 	return mat.TransposeVec{v}
 }
 
+func (v *VecDense) Transpose() *Dense {
+	return &Dense{mat.DenseCopyOf(v.VecDense)}
+}
+
 func (v *VecDense) String() string {
 	return fmt.Sprintf("%v", mat.Formatted(v.VecDense, mat.Prefix(""), mat.Squeeze()))
 }
