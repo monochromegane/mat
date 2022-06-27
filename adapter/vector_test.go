@@ -269,7 +269,7 @@ func TestVecDenseTVec(t *testing.T) {
 
 func TestVecDenseTranspose(t *testing.T) {
 	a := mat.NewVecDense(4, data)
-	org := mat.DenseCopyOf(a)
+	org := mat.DenseCopyOf(a.TVec())
 
 	ax := VecDenseCopyOf(a)
 	adapted := ax.Transpose()

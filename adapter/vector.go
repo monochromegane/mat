@@ -86,7 +86,7 @@ func (v *VecDense) TVec() mat.Vector {
 }
 
 func (v *VecDense) Transpose() *Dense {
-	return &Dense{mat.DenseCopyOf(v.VecDense)}
+	return &Dense{mat.DenseCopyOf(v.VecDense.TVec())}
 }
 
 func (v *VecDense) String() string {
