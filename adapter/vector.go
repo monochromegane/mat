@@ -85,6 +85,12 @@ func (v *VecDense) TVec() mat.Vector {
 	return mat.TransposeVec{v}
 }
 
+func (v *VecDense) OuterVec(alpha float64, y mat.Vector) *Dense {
+	var dense mat.Dense
+	dense.Outer(alpha, v.VecDense, y)
+	return &Dense{&dense}
+}
+
 func (v *VecDense) Transpose() *Dense {
 	return &Dense{mat.DenseCopyOf(v.VecDense.TVec())}
 }

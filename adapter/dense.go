@@ -91,7 +91,16 @@ func (m *Dense) MulElem(b mat.Matrix) *Dense {
 	return &Dense{&dense}
 }
 
-// func (m *Dense) Outer(alpha float64, x, y Vector)
+func (m *Dense) Outer(alpha float64, y mat.Vector) *Dense {
+	_, cx := m.Dense.Dims()
+	if cx != 1 {
+		panic(mat.ErrShape)
+	}
+
+	var dense mat.Dense
+	dense.Outer(alpha, m.Dense.ColView(0), y)
+	return &Dense{&dense}
+}
 
 func (m *Dense) Pow(n int) *Dense {
 	var dense mat.Dense

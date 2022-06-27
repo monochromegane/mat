@@ -259,6 +259,29 @@ func TestDenseMulElem(t *testing.T) {
 	}
 }
 
+func TestDenseOuter(t *testing.T) {
+	a := mat.NewVecDense(4, data)
+	b := mat.NewVecDense(4, data)
+
+	org := mat.NewDense(4, 4, nil)
+	org.Outer(1.1, a, b)
+
+	ax := VecDenseCopyOf(a).Transpose().Transpose() // Dense with shape(4, 1)
+	adapted := ax.Outer(1.1, b)
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of Outer should be equal.")
+	}
+
+	ax = VecDenseCopyOf(a).Transpose().Transpose()
+	bx := VecDenseCopyOf(b)
+	adapted = ax.Outer(1.1, bx)
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of Outer should be equal.")
+	}
+}
+
 func TestDensePow(t *testing.T) {
 	a := mat.NewDense(2, 2, data)
 

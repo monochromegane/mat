@@ -267,6 +267,29 @@ func TestVecDenseTVec(t *testing.T) {
 	}
 }
 
+func TestVecDenseOuterVec(t *testing.T) {
+	a := mat.NewVecDense(4, data)
+	b := mat.NewVecDense(4, data)
+
+	org := mat.NewDense(4, 4, nil)
+	org.Outer(1.1, a, b)
+
+	ax := VecDenseCopyOf(a)
+	adapted := ax.OuterVec(1.1, b)
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of OuterVec should be equal.")
+	}
+
+	ax = VecDenseCopyOf(a)
+	bx := VecDenseCopyOf(b)
+	adapted = ax.OuterVec(1.1, bx)
+
+	if !mat.EqualApprox(org, adapted.Dense, epsilon) {
+		t.Errorf("Result of OuterVec should be equal.")
+	}
+}
+
 func TestVecDenseTranspose(t *testing.T) {
 	a := mat.NewVecDense(4, data)
 	org := mat.DenseCopyOf(a.TVec())
