@@ -48,8 +48,6 @@ func (m *Dense) ColView(j int) *VecDense {
 	return &VecDense{&vec}
 }
 
-// func (m *Dense) DiagView() mat.Diagonal
-
 func (m *Dense) DivElem(b mat.Matrix) *Dense {
 	var dense mat.Dense
 	dense.DivElem(m.Dense, b)
