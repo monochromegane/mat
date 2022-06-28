@@ -15,21 +15,21 @@ func TestLinearRegressionUsingMat(t *testing.T) {
 	theta := mat.NewDense(3, 1, []float64{2.0, 3.0, 4.0})
 	X, Y := syntheticData(N, theta)
 
-	XTX := mat.NewDense(3, 3, nil)
-	XTX.Product(X.T(), X)
+	XTXinv := mat.NewDense(3, 3, nil)
+	XTXinv.Product(X.T(), X)
 
 	I := mat.NewDiagDense(3, []float64{1.0, 1.0, 1.0})
 	reg := mat.DenseCopyOf(I)
 	reg.Scale(lambda, reg)
 
-	XTX.Add(XTX, reg)
-	XTX.Inverse(XTX)
+	XTXinv.Add(XTXinv, reg)
+	XTXinv.Inverse(XTXinv)
 
 	XTY := mat.NewDense(3, 1, nil)
 	XTY.Product(X.T(), Y)
 
 	estimated := mat.NewDense(3, 1, nil)
-	estimated.Product(XTX, XTY)
+	estimated.Product(XTXinv, XTY)
 
 	if !mat.EqualApprox(theta, estimated, 0.05) {
 		t.Errorf("Parameter should be estimated.")
