@@ -1,4 +1,4 @@
-# Matrix adapter
+# Matrix adapter [![Go](https://github.com/monochromegane/mat/actions/workflows/go.yml/badge.svg)](https://github.com/monochromegane/mat/actions/workflows/go.yml)
 
 The small adapter which provides method signatures that allow intuitive operation with fewer lines of code for [gonum/mat](https://github.com/gonum/gonum/tree/master/mat).
 
