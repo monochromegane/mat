@@ -70,7 +70,7 @@ fmt.Printf("%v", a)
 
 ### Transpose
 
-Instead of T(), we have Transpose(), which is more compatible with the new function.
+Instead of `T()`, we have `Transpose()`, which is more compatible with the new function.
 This function is useful when the transposed matrix is used as a receiver as follow:
 
 ```go
