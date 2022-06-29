@@ -97,3 +97,10 @@ func (m *Dense) Add(b mat.Matrix) *Dense {
 }
 ```
 
+## License
+
+[MIT](https://github.com/monochromegane/mat/blob/master/LICENSE)
+
+## Author
+
+[monochromegane](https://github.com/monochromegane)
