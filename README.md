@@ -59,7 +59,7 @@ Both the input argument and return value of the new function follow the mat.Matr
 
 ### fmt.Stringer interface
 
-String() outputs the contents of a well-formed matrix as follw:
+`String()` outputs the contents of a well-formed matrix as follw:
 
 ```go
 a := NewDense(2, 2, data)
