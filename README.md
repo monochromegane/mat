@@ -1,10 +1,10 @@
 # Matrix adapter
 
-The small adapter package provides method signatures that allow intuitive operation with fewer lines of code for [gonum/mat](https://github.com/gonum/gonum/tree/master/mat).
+The small adapter which provides method signatures that allow intuitive operation with fewer lines of code for [gonum/mat](https://github.com/gonum/gonum/tree/master/mat).
 
 ## Example
 
-Comparison of implementaion for normal equation of Ridge regresssion ($\hat{\theta} = (X^{\top}X + \lambda I)^{-1} X^{\top}Y$).
+Comparison of implementaion for normal equation of Ridge regression ($\hat{\theta} = (X^{\top}X + \lambda I)^{-1} X^{\top}Y$).
 
 ### Matrix adapter
 
